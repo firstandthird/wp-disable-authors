@@ -5,7 +5,8 @@ $disableauthorsDisableFeeds = get_option('disableauthors_disable_feed', 'on');
 function disableauthors_disable_feed() {
   global $disableauthorsDisableFeeds;
   if ($disableauthorsDisableFeeds === 'on') {
-    wp_die( __('no feed', 'disableauthors') );
+    wp_redirect(get_option('home'), 301);
+    exit;
   }
 }
 
