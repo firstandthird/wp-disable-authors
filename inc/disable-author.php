@@ -8,7 +8,12 @@ function disableauthors_disable_author_page() {
   global $disableauthorsDisableAuthorPages;
 
   if (is_author() && 'on' === $disableauthorsDisableAuthorPages) {
-    wp_redirect(get_option('home'), 301);
+    $wp_query->set_404();
+
+    status_header(404);
+
+    require get_404_template();
+
     exit;
   }
 }
