@@ -54,8 +54,8 @@ function disableauthors_field_disable_feed_render() {
 	$option = get_option('disableauthors_disable_feed', 'on');
   $checked = $option === 'on';
 	?>
-	<label><input type="checkbox" name='disableauthors_disable_feed' <?php checked($checked); ?> /> <?php _e('Disable feeds', 'disableauthors'); ?></label>
-	<p><?php _e('This will attempt to disable any rss feed Wordpress may generate. Note: Some plugins might modify or output their own feed.', 'disableauthors'); ?></p>
+	<label><input type="checkbox" name='disableauthors_disable_feed' <?php checked($checked); ?> /> <?php esc_html_e('Disable feeds', 'disableauthors'); ?></label>
+	<p><?php esc_html_e('This will attempt to disable any rss feed Wordpress may generate. Note: Some plugins might modify or output their own feed.', 'disableauthors'); ?></p>
 	<?php
 }
 
@@ -63,8 +63,8 @@ function disableauthors_field_default_disable_author_pages() {
 	$option = get_option('disableauthors_disable_author_pages', 'on');
   $checked = $option === 'on';
 	?>
-	<label><input type="checkbox" name='disableauthors_disable_author_pages' <?php checked($checked); ?> /> <?php _e('Disable author pages', 'disableauthors'); ?></label>
-	<p><?php _e('Disables access to the standard author archive pages', 'disableauthors'); ?></p>
+	<label><input type="checkbox" name='disableauthors_disable_author_pages' <?php checked($checked); ?> /> <?php esc_html_e('Disable author pages', 'disableauthors'); ?></label>
+	<p><?php esc_html_e('Disables access to the standard author archive pages', 'disableauthors'); ?></p>
 	<?php
 }
 

@@ -1,9 +1,12 @@
 {
-    "require-dev": {
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0"
-    },
+    "name": "firstandthird/wp-disable-authors",
+    "description": "Prevents leaking of author information in Wordpress",
+    "type": "library",
     "require": {
-        "automattic/vipwpcs": "^0.4.0",
-        "wp-coding-standards/wpcs": "^1.2"
+        "automattic/vipwpcs": "^2.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.6.2"
     }
 }
