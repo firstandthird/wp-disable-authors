@@ -10,6 +10,7 @@ services:
       ABSPATH: /usr/src/wordpress/
     volumes:
       - wordpress:/var/www/html
+      - ./test-plugins:/var/www/html/wp-content/plugins
       - .:/var/www/html/wp-content/plugins/wp-disable-authors
     depends_on:
       - mysql
