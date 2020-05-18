@@ -13,3 +13,4 @@ require_once(__DIR__ . '/inc/settings-page.php');
 require_once(__DIR__ . '/inc/disable-feeds.php');
 require_once(__DIR__ . '/inc/rename-author.php');
 require_once(__DIR__ . '/inc/disable-author.php');
+require_once(__DIR__ . '/inc/plugin-patcher.php');

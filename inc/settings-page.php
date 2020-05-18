@@ -11,6 +11,7 @@ function disableauthors_settings_init(  ) {
 	register_setting('disableauthors', 'disableauthors_default_name', array( 'default' => 'Anonymous' ));
 	register_setting('disableauthors', 'disableauthors_disable_feed', array( 'default' => true ));
 	register_setting('disableauthors', 'disableauthors_disable_author_pages', array( 'default' => true ));
+	register_setting('disableauthors', 'disableauthors_yoast', array( 'default' => true ));
 
 	add_settings_section(
 		'disableauthors_pluginPage_settings_section',
@@ -36,7 +37,14 @@ function disableauthors_settings_init(  ) {
 	add_settings_field(
 		'disable-author-pages',
 		__('Disable Author Pages', 'disableauthors'),
-		'disableauthors_field_default_disable_author_pages',
+		'disableauthors_field_disable_author_pages',
+		'disableauthors',
+		'disableauthors_pluginPage_settings_section'
+	);
+	add_settings_field(
+		'disable-author-yoast',
+		__('Patch Yoast (wordpress-seo)', 'disableauthors'),
+		'disableauthors_field_yoast',
 		'disableauthors',
 		'disableauthors_pluginPage_settings_section'
 	);
@@ -59,12 +67,21 @@ function disableauthors_field_disable_feed_render() {
 	<?php
 }
 
-function disableauthors_field_default_disable_author_pages() {
+function disableauthors_field_disable_author_pages() {
 	$option = get_option('disableauthors_disable_author_pages', 'on');
   $checked = $option === 'on';
 	?>
 	<label><input type="checkbox" name='disableauthors_disable_author_pages' <?php checked($checked); ?> /> <?php esc_html_e('Disable author pages', 'disableauthors'); ?></label>
 	<p><?php esc_html_e('Disables access to the standard author archive pages', 'disableauthors'); ?></p>
+	<?php
+}
+
+function disableauthors_field_yoast() {
+	$option = get_option('disableauthors_yoast', 'on');
+  $checked = $option === 'on';
+	?>
+	<label><input type="checkbox" name='disableauthors_yoast' <?php checked($checked); ?> /> <?php esc_html_e('Patch Yoast (wordpress-seo) plugin?', 'disableauthors'); ?></label>
+	<p><?php esc_html_e('Customizes Yoast to not output author details. Primarily affects ld+json output and may have an impact on seo.', 'disableauthors'); ?></p>
 	<?php
 }
 
