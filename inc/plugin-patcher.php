@@ -21,6 +21,7 @@ if ($disableauthorsYoast) {
 $disableauthorsAmp = get_option('disableauthors_amp', 'on');
 if ($disableauthorsAmp) {
   add_filter('amp_post_template_data', 'disableauthorsAmpTemplateData');
+  add_filter('amp_post_template_metadata', 'disableauthorsAmpMetadata');
 
   function disableauthorsAmpTemplateData($template_data) {
     global $disableauthorsAuthorName;
@@ -33,5 +34,15 @@ if ($disableauthorsAmp) {
     }
 
     return $template_data;
+  }
+
+  function disableauthorsAmpMetadata($metadata) {
+    global $disableauthorsAuthorName;
+
+    if (isset($metadata['author'])) {
+      $metadata['author']['name'] = $disableauthorsAuthorName;
+    }
+
+    return $metadata;
   }
 }
