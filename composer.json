@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "automattic/vipwpcs": "^2.0",
-        "wpackagist-plugin/wordpress-seo": "14.1"
+        "wpackagist-plugin/wordpress-seo": "14.1",
+        "wpackagist-plugin/amp":"1.5.3"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",

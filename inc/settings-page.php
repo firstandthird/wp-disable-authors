@@ -12,6 +12,7 @@ function disableauthors_settings_init(  ) {
 	register_setting('disableauthors', 'disableauthors_disable_feed', array( 'default' => true ));
 	register_setting('disableauthors', 'disableauthors_disable_author_pages', array( 'default' => true ));
 	register_setting('disableauthors', 'disableauthors_yoast', array( 'default' => true ));
+	register_setting('disableauthors', 'disableauthors_amp', array( 'default' => true ));
 
 	add_settings_section(
 		'disableauthors_pluginPage_settings_section',
@@ -45,6 +46,13 @@ function disableauthors_settings_init(  ) {
 		'disable-author-yoast',
 		__('Patch Yoast (wordpress-seo)', 'disableauthors'),
 		'disableauthors_field_yoast',
+		'disableauthors',
+		'disableauthors_pluginPage_settings_section'
+	);
+	add_settings_field(
+		'disable-author-amp',
+		__('Patch Amp', 'disableauthors'),
+		'disableauthors_field_amp',
 		'disableauthors',
 		'disableauthors_pluginPage_settings_section'
 	);
@@ -82,6 +90,15 @@ function disableauthors_field_yoast() {
 	?>
 	<label><input type="checkbox" name='disableauthors_yoast' <?php checked($checked); ?> /> <?php esc_html_e('Patch Yoast (wordpress-seo) plugin?', 'disableauthors'); ?></label>
 	<p><?php esc_html_e('Customizes Yoast to not output author details. Primarily affects ld+json output and may have an impact on seo.', 'disableauthors'); ?></p>
+	<?php
+}
+
+function disableauthors_field_amp() {
+	$option = get_option('disableauthors_amp', 'on');
+  $checked = $option === 'on';
+	?>
+	<label><input type="checkbox" name='disableauthors_amp' <?php checked($checked); ?> /> <?php esc_html_e('Patch AMP plugin?', 'disableauthors'); ?></label>
+	<p><?php esc_html_e('Filters the template data for AMP', 'disableauthors'); ?></p>
 	<?php
 }
 
