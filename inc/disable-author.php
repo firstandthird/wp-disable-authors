@@ -38,7 +38,7 @@ function disableauthors_disable_rest($response, $server, $request) {
       $method = $request->get_method();
       $route = $request->get_route();
       $is_user_listing = ($server::READABLE === $method && '/wp/v2/users' === substr($route, 0, 12));
-      if (!current_user_can('list_users') && $is_user_listing) {
+      if (!is_admin() && !current_user_can('list_users') && $is_user_listing) {
         exit;
       }
   }
